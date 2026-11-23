@@ -1,11 +1,13 @@
+import { Link } from "react-router"
 import { dateFromIsoTime, timeFromIsoTime } from "../utils/date"
 
 interface EventCardProps{
+    id: number
     title: string
     starts_at:string
 }
 
-function EventCard({title, starts_at}:EventCardProps){
+function EventCard({id, title, starts_at}:EventCardProps){
     const date = dateFromIsoTime(starts_at)
     const time = timeFromIsoTime(starts_at)
     return(
@@ -13,6 +15,7 @@ function EventCard({title, starts_at}:EventCardProps){
             <h2>{title}</h2>
             <p> Date: {date}</p>
             <p> Start time: {time}</p>
+            <Link to={`/events/${id}`}>View Event</Link>
         </li>
     )
 }

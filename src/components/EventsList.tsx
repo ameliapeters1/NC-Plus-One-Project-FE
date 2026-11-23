@@ -14,8 +14,10 @@ function EventsList(){
             {events.map((event)=>(
                 <EventCard 
                 key = {event.id}
+                id = {event.id}
                 title={event.title}
-                starts_at={event.starts_at}/>
+                starts_at={event.starts_at}
+                />
             ))}
         </ul>
     )
