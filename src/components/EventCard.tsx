@@ -12,7 +12,7 @@ function EventCard({title, starts_at}:EventCardProps){
         <li className="event-card">
             <h2>{title}</h2>
             <p> Date: {date}</p>
-            <p> Time: {time}</p>
+            <p> Start time: {time}</p>
         </li>
     )
 }
