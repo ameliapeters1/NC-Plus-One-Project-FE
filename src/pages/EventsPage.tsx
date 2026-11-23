@@ -1,5 +1,7 @@
+import EventsList from "../components/EventsList";
+
 function EventsPage(){
-    return(<p>events will go here</p>)
+    return(<EventsList/>)
 }
 
 export default EventsPage

@@ -8,11 +8,11 @@ function AppRoutes() {
         <>
             <NavigationBar/>
             <Routes>
-                <Route index element={<HomePage />} />
-            </Routes>
-            <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/events" element={<EventsPage />} />
+
             </Routes>
+
         </>
     )
 }
