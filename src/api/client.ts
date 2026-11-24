@@ -1,7 +1,7 @@
 import { writeToken } from "../utils/tokenStorage";
 
 export async function login(email: string, password: string) {
-  const response = await fetch(`${import.meta.env.VITE_AUTH_API_URL}/auth/login`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -12,8 +12,8 @@ export async function login(email: string, password: string) {
   }
   if (!response.ok) throw new Error("Unable to log in, please try again");
 
-  const { access_token } = await response.json();
-  writeToken(access_token)
+  const { token } = await response.json();
+  writeToken(token)
 }
 
 export async function register(name:string, email: string, password: string) {
@@ -31,5 +31,5 @@ export async function register(name:string, email: string, password: string) {
   }
   if (!response.ok) throw new Error("Unable to sign up, please try again");
 
-  //login(email,password)
+  login(email,password)
 }

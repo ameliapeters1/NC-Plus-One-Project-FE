@@ -5,6 +5,8 @@ import EventsPage from "./pages/EventsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import IndividualEventPage from "./pages/IndividualEventPage";
 import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import AccountPage from "./pages/AccountPage";
 
 function AppRoutes() {
     return(
@@ -15,6 +17,8 @@ function AppRoutes() {
                 <Route path="/events" element={<EventsPage />} />
                 <Route path="/events/:id" element={<IndividualEventPage />} />
                 <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/account" element={<AccountPage/>}/>
 
                 <Route path = "/*" element={<NotFoundPage/>} />
             </Routes>

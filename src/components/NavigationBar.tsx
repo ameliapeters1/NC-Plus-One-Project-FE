@@ -16,14 +16,13 @@ function NavigationBar(){
             </NavLink>
 
             <NavLink 
-            to="/register" 
+            to="/account" 
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
-                Register    
+                Account    
             </NavLink>
 
-        
         </nav>
     )
-    
+
 }
 export default NavigationBar
