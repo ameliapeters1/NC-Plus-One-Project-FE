@@ -1,23 +1,28 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Colours */
+  --text: #705d7c;
+  --text-h: #493257;
+  --bg: #f8effa;
+  --border: #e6d5ed;
+  --code-bg: #f1e5f5;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --accent: #b57acb;
+  --accent-bg: rgba(181, 122, 203, 0.15);
+  --accent-border: rgba(181, 122, 203, 0.5);
+  --social-bg: #f5eafa;
+
+  --shadow:
+    rgba(91, 51, 110, 0.12) 0 10px 15px -3px,
+    rgba(91, 51, 110, 0.06) 0 4px 6px -2px;
+
+  /* Fonts */
+  --sans: 'Segoe Print', 'Comic Sans MS', cursive;
+  --heading: 'Segoe Print', 'Comic Sans MS', cursive;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  font: 16px/145% var(--sans);
+  letter-spacing: 0.1px;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -26,30 +31,11 @@
   -moz-osx-font-smoothing: grayscale;
 
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
+/* Main app */
 #root {
   width: 1126px;
   max-width: 100%;
@@ -64,42 +50,48 @@
 
 body {
   margin: 0;
+  background: #f8effa;
 }
 
+/* Headings */
 h1,
 h2 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-h);
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
+  font-size: 42px;
+  letter-spacing: -1px;
   margin: 32px 0;
+
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 30px;
     margin: 20px 0;
   }
 }
+
 h2 {
-  font-size: 24px;
+  font-size: 23px;
   line-height: 118%;
-  letter-spacing: -0.24px;
   margin: 0 0 8px;
+
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
+
 p {
   margin: 0;
 }
 
+/* Code */
 code,
 .counter {
   font-family: var(--mono);
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--text-h);
 }
 
@@ -108,4 +100,87 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* Main navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 18px 30px;
+    background: #382047;
+    border: 2px solid #543568;
+    border-radius: 18px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 3px 4px 0px #c5a5d5;
+}
+
+/* Navigation links */
+nav .nav-link {
+    text-decoration: none;
+    color: #ead9f0;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+nav .nav-link:hover {
+    background: #654477;
+    color: white;
+    transform: translateY(-2px) rotate(-1deg);
+}
+
+/* Active link */
+nav .nav-link.active {
+    background: #b57acb;
+    color: white;
+    box-shadow: 2px 3px 0px #9463a7;
+}
+
+/* Login and Register container */
+.auth-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 200px;
+    margin: 30px auto;
+}
+
+/* Login and Register buttons */
+.auth-nav .nav-link {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ead9f0;
+    background: #382047;
+    border: 2px solid #543568;
+    border-radius: 14px;
+    box-shadow: 2px 3px 0px #c5a5d5;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.auth-nav .nav-link:hover {
+    background: #654477;
+    color: white;
+    transform: translateY(-3px) rotate(-1deg);
+}
+
+/* Active */
+.auth-nav .nav-link.active {
+    background: #b57acb;
+    color: white;
+    border-color: #a36bb8;
+    box-shadow: 2px 3px 0px #9463a7;
 }

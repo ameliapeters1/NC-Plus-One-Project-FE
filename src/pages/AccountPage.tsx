@@ -22,9 +22,9 @@ function AccountPage(){
                 </>
 
             ): (
-                <nav>
+                <nav className="auth-nav">
                     <NavLink 
-                    to="/login" end
+                    to="/login" 
                     className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
                         Login    
                     </NavLink>
