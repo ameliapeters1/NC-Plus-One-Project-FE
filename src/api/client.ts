@@ -31,5 +31,5 @@ export async function register(name:string, email: string, password: string) {
   }
   if (!response.ok) throw new Error("Unable to sign up, please try again");
 
-  login(email,password)
+  await login(email,password)
 }

@@ -17,8 +17,8 @@ function AccountPage(){
         {user ? 
             (
                 <>
-                    <p>hello {user.name}</p>
-                    <button onClick={handleLogout}>Logout</button>
+                    <p>hello {user.email}</p>
+                    <button className="logout-btn" onClick={handleLogout}>Logout</button>
                 </>
 
             ): (

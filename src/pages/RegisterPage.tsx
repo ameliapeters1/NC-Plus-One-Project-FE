@@ -24,10 +24,7 @@ function RegisterPage(){
         try{
             await register(name, email.trim(), password)
             setSuccess(true)
-            setAuth({
-                name: name,
-                email: email
-            })
+             setAuth({email: email})
             navigate("/account")
         }catch(err){
             if (err instanceof Error){

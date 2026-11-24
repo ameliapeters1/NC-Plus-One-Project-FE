@@ -25,13 +25,7 @@ function LoginPage(){
             await login(email.trim(), password)
             setSuccess(true)
 
-            // CHANGE HARDCODING NAME
-
-
-            setAuth({
-                name: "name",
-                email: email
-            })
+            setAuth({email: email})
             navigate("/account")
         } catch(err){
             if (err instanceof Error){

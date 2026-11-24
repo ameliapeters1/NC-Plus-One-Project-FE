@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import type { Event } from "../types/eventsTypes";
+import type { FetchedEvent } from "../types/eventsTypes";
 
 export function useEventsList(){
-    const [events, setEvents] = useState<Event[]>([]);
+    const [events, setEvents] = useState<FetchedEvent[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -17,7 +17,7 @@ export function useEventsList(){
                     throw new Error(`Could not load events - ${response.status}`)
                 }
 
-                const data: { events: Event[] } = await response.json()
+                const data: { events: FetchedEvent[] } = await response.json()
                 setEvents(data.events)
             } catch (err){
                 setError(err instanceof Error ? err.message : "Oops something went wrong")

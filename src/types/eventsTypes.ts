@@ -1,9 +1,10 @@
-export interface Event{
+export interface FetchedEvent{
     id: number,
     title: string,
     description:string,
     starts_at: string,
     ends_at:string,
-    organiser_id: number
-    venue_id: number
+    location: string
+    address: string
+    capacity: 200,
 }
