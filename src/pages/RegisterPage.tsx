@@ -8,16 +8,18 @@ function RegisterPage(){
     const [password, setPassword] = useState("")
     const [error, setError] = useState<string|null>(null)
     const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
+    const [success, setSuccess] = useState<boolean>(false)
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>){
         event.preventDefault()
 
+        setSuccess(false)
         setError(null)
         setIsSubmitting(true)
 
         try{
-            // should put an access token into local storage upon registering 
             await register(name, email.trim(), password)
+            setSuccess(true)
         }catch(err){
             if (err instanceof Error){
                 setError(err.message)
@@ -61,6 +63,7 @@ function RegisterPage(){
              required/>
 
             {error && <p>Error found! {error}</p>}
+            {success && <p>You're in!</p>}
 
             <button type="submit" className="signupbtn" disabled={isSubmitting}>{isSubmitting ? "Signing up...": "Sign up"}</button>
 
