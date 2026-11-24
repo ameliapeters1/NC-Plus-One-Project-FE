@@ -1,13 +1,17 @@
 import { useState } from "react"
 import type { SubmitEvent } from "react"
 import { login } from "../api/client"
+import { useAuth } from "../context/AuthContext"
+import { useNavigate } from "react-router"
 
 function LoginPage(){
+    const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState<string|null>(null)
     const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
     const [success, setSuccess] = useState<boolean>(false)
+    const {setAuth} = useAuth()
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>){
         event.preventDefault()
@@ -20,7 +24,16 @@ function LoginPage(){
             // should put an access token into local storage upon registering 
             await login(email.trim(), password)
             setSuccess(true)
-        }catch(err){
+
+            // CHANGE HARDCODING NAME
+
+
+            setAuth({
+                name: "name",
+                email: email
+            })
+            navigate("/account")
+        } catch(err){
             if (err instanceof Error){
                 setError(err.message)
             } else {

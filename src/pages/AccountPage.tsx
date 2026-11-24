@@ -1,22 +1,43 @@
 import { NavLink } from "react-router"
+import { useAuth } from "../context/AuthContext"
+import { clearToken } from "../utils/tokenStorage"
 
 function AccountPage(){
+    const { user, setAuth } = useAuth()
+
+    function handleLogout(){
+        setAuth(null)
+        clearToken()
+    }
+
     return(
     <>
         <h2> Account info</h2>
-        <nav>
-            <NavLink 
-            to="/login" end
-            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
-                Login    
-            </NavLink>
 
-            <NavLink 
-            to="/register" 
-            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
-                Register    
-            </NavLink>
-        </nav>
+        {user ? 
+            (
+                <>
+                    <p>hello {user.name}</p>
+                    <button onClick={handleLogout}>Logout</button>
+                </>
+
+            ): (
+                <nav>
+                    <NavLink 
+                    to="/login" end
+                    className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
+                        Login    
+                    </NavLink>
+
+                    <NavLink 
+                    to="/register" 
+                    className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
+                        Register    
+                    </NavLink>
+                </nav>
+            )
+            }
+        
     </>
     )
 }

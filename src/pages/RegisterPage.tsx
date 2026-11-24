@@ -1,14 +1,18 @@
 import { useState } from "react"
 import type { SubmitEvent } from "react"
 import { register } from "../api/client"
+import { useNavigate } from "react-router"
+import { useAuth } from "../context/AuthContext"
 
 function RegisterPage(){
+    const navigate = useNavigate()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState<string|null>(null)
     const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
     const [success, setSuccess] = useState<boolean>(false)
+    const {setAuth} = useAuth()
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>){
         event.preventDefault()
@@ -20,6 +24,11 @@ function RegisterPage(){
         try{
             await register(name, email.trim(), password)
             setSuccess(true)
+            setAuth({
+                name: name,
+                email: email
+            })
+            navigate("/account")
         }catch(err){
             if (err instanceof Error){
                 setError(err.message)
