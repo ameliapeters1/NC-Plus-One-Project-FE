@@ -184,3 +184,132 @@ nav .nav-link.active {
     border-color: #a36bb8;
     box-shadow: 2px 3px 0px #9463a7;
 }
+
+.auth-page {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main paper card */
+.auth-form {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 430px;
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    box-sizing: border-box;
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    background: #fffaff;
+    border: 2px solid var(--border);
+    border-radius: 5px 14px 6px 12px;
+
+    box-shadow:
+        5px 6px 0 #e6d5ed,
+        9px 11px 0 rgba(181, 122, 203, 0.12),
+        var(--shadow);
+
+    transform: rotate(-1deg);
+}
+
+/* Decorative tape */
+.auth-form::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 38%;
+    width: 100px;
+    height: 28px;
+    background: rgba(181, 122, 203, 0.35);
+    transform: rotate(-4deg);
+    border-left: 1px dashed rgba(112, 93, 124, 0.2);
+    border-right: 1px dashed rgba(112, 93, 124, 0.2);
+}
+
+/* Heading */
+.auth-form h1 {
+    text-align: center;
+    margin: 5px 0 20px;
+    font-size: 34px;
+    color: var(--text-h);
+    transform: rotate(1deg);
+}
+
+/* Labels */
+.auth-form label {
+    color: var(--text-h);
+    font-weight: 600;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+/* Inputs */
+.auth-form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--text-h);
+
+    background: #fcf7ff;
+    border: 2px solid var(--border);
+    border-radius: 8px 5px 9px 6px;
+
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.auth-form input::placeholder {
+    color: #b49dbd;
+}
+
+.auth-form input:focus {
+    border-color: var(--accent);
+    background: white;
+    box-shadow: 3px 3px 0 var(--accent-bg);
+    transform: translateY(-2px);
+}
+
+/* Submit button */
+.auth-form button {
+    margin-top: 15px;
+    padding: 13px 20px;
+
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fffaff;
+
+    background: #382047;
+    border: 2px solid #543568;
+    border-radius: 12px;
+
+    box-shadow: 3px 4px 0 #c5a5d5;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.auth-form button:hover:not(:disabled) {
+    background: #654477;
+    transform: translateY(-3px) rotate(-1deg);
+    box-shadow: 4px 6px 0 #c5a5d5;
+}
+
+.auth-form button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 1px 2px 0 #c5a5d5;
+}
+
+.auth-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

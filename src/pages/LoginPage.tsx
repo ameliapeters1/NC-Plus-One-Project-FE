@@ -40,7 +40,7 @@ function LoginPage(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
             <h1>Login here!</h1>
             
 

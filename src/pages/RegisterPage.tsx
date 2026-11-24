@@ -39,7 +39,7 @@ function RegisterPage(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
             <h1>Sign up here!</h1>
             <label htmlFor="name">Name</label>
               <input 

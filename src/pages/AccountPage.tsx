@@ -11,7 +11,7 @@ function AccountPage(){
     }
 
     return(
-    <>
+    <div>
         <h2> Account info</h2>
 
         {user ? 
@@ -38,7 +38,7 @@ function AccountPage(){
             )
             }
         
-    </>
+    </div>
     )
 }
 
