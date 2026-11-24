@@ -10,9 +10,15 @@ function NavigationBar(){
             </NavLink>
 
             <NavLink 
-            to="/events" end
+            to="/events" 
             className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
                 Events    
+            </NavLink>
+
+            <NavLink 
+            to="/register" 
+            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
+                Register    
             </NavLink>
 
         
