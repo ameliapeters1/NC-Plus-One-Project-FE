@@ -2,6 +2,7 @@ import { useState } from "react"
 import type { NewEvent } from "../types/eventsTypes"
 import { addEvent } from "../api/client"
 import { useNavigate } from "react-router"
+import { validateTimes } from "../utils/validateTimes"
 // need to add a backend endpoint to fetch venue info but hardcode for now
 const venues = [
     {"id": 1, "name": "Nexus, University of Leeds"}, 
@@ -25,23 +26,7 @@ function AddEventForm(){
     const navigate = useNavigate()
 
     //check for valid time entries pre submitting
-    function checkTimes(){
-        if (!startTime || !endTime) {
-            return ""
-        }
-
-        const start = new Date(startTime)
-        const end = new Date(endTime)
-        const now = new Date()
-
-        if (start <= now){
-            return "event must be in the future"
-        }
-        if (end <=start){
-            return "end must be after start"
-        }
-        return ""
-    }
+    const validateTime = validateTimes(startTime, endTime)
 
     const allFieldsComplete = (
         title.trim() !== "" &&
@@ -51,7 +36,7 @@ function AddEventForm(){
         venueID !== 0
     )
 
-    const validationError = allFieldsComplete ? checkTimes() : ""
+    const validationError = allFieldsComplete ? validateTime : ""
     const validForm = allFieldsComplete && validationError===""
         
 
