@@ -1,4 +1,4 @@
-import type { NewEvent } from "../types/eventsTypes";
+import type { EditEvent, NewEvent } from "../types/eventsTypes";
 import { readToken, writeToken } from "../utils/tokenStorage";
 
 export async function login(email: string, password: string) {
@@ -55,5 +55,33 @@ export async function addEvent(event: NewEvent) {
   );
 
   if (!response.ok) throw new Error("Unable to add event please try again");
+
+}
+
+export async function editEvent(event: EditEvent) {
+  const token = readToken()
+  console.log(token)
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/events/${event.id}`,
+    {
+      method: "PATCH",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        description: event.description,
+        starts_at: event.startsAt,
+        ends_at: event.endsAt
+      }),
+    },
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json()
+    console.log("Backend error:", errorData)
+    throw new Error(errorData.detail?.message || "Unable to edit event")
+}
+  //if (!response.ok) throw new Error("Unable to edit event, please try again");
 
 }

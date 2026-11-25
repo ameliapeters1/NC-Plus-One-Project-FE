@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import { dateFromIsoTime, timeFromIsoTime } from "../utils/date"
+import { dateFromIsoTime, timeFromIsoTime } from "../utils/dateConversion"
 
 interface EventCardProps{
     id: number

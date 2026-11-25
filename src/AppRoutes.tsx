@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import AccountPage from "./pages/AccountPage";
 import AddEventPage from "./pages/AddEventPage";
+import EditEventPage from "./pages/EditEventPage";
 
 function AppRoutes() {
     return(
@@ -18,6 +19,7 @@ function AppRoutes() {
                 <Route path="/events" element={<EventsPage />} />
                 <Route path="/events/:id" element={<IndividualEventPage />} />
                 <Route path="/events/new" element={<AddEventPage/>}/>
+                <Route path="/events/:id/edit" element={<EditEventPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/account" element={<AccountPage/>}/>

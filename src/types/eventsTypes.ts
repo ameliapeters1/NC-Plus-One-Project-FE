@@ -6,7 +6,7 @@ export interface FetchedEvent{
     ends_at:string,
     location: string
     address: string
-    capacity: 200,
+    capacity: number,
 }
 
 export interface NewEvent{
@@ -15,4 +15,11 @@ export interface NewEvent{
     startsAt:string
     endsAt:string
     venueID:number
+}
+
+export interface EditEvent{
+    id: number
+    description:string
+    startsAt:string
+    endsAt:string
 }

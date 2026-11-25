@@ -11,3 +11,12 @@ export function timeFromIsoTime(time:string){
 }
 
 //2026-06-18T20:30:00+01:00
+
+export function toDateTimeLocal(isoDate: string) {
+    const date = new Date(isoDate)
+    const offset = date.getTimezoneOffset() * 60000
+
+    return new Date(date.getTime() - offset)
+        .toISOString()
+        .slice(0, 16)
+}

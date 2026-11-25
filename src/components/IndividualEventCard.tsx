@@ -1,5 +1,5 @@
 import type { FetchedEvent } from "../types/eventsTypes";
-import { dateFromIsoTime, timeFromIsoTime } from "../utils/date";
+import { dateFromIsoTime, timeFromIsoTime } from "../utils/dateConversion";
 
 interface IndividualEventCardProps{
     event: FetchedEvent
