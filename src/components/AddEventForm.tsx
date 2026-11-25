@@ -1,6 +1,7 @@
 import { useState } from "react"
 import type { NewEvent } from "../types/eventsTypes"
 import { addEvent } from "../api/client"
+import { useNavigate } from "react-router"
 // need to add a backend endpoint to fetch venue info but hardcode for now
 const venues = [
     {"id": 1, "name": "Nexus, University of Leeds"}, 
@@ -19,6 +20,9 @@ function AddEventForm(){
     const [endTime, setEndTime] = useState("")
     const [venueID, setVenueID] = useState<number>(0)
     const [error, setError] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
+    const navigate = useNavigate()
 
     //check for valid time entries pre submitting
     function checkTimes(){
@@ -66,9 +70,13 @@ function AddEventForm(){
         }
 
         try{
+            setIsSubmitting(true)
             await addEvent(newEvent)
+            navigate("/events", {state: {successMessage: "event added!"}})
         } catch (err){
             setError(err instanceof Error ? err.message: "uh oh something went wrong")
+        } finally{
+            setIsSubmitting(false)
         }
 
     }
@@ -80,7 +88,7 @@ function AddEventForm(){
 
             <label htmlFor="title">Title</label>
             <input 
-            id="email" 
+            id="title" 
             type="text" 
             placeholder="Enter title" 
             value={title}
@@ -89,7 +97,7 @@ function AddEventForm(){
 
             <label htmlFor="description">Description</label>
             <input 
-            id="password" 
+            id="description" 
             type="text" 
             placeholder="Enter description" 
             value={description} 
@@ -135,7 +143,9 @@ function AddEventForm(){
                 <p className="error">{validationError || error}</p>
             )}
             
-            <button type="submit" disabled={!validForm}>add event</button>
+            <button type="submit" disabled={!validForm||isSubmitting}>
+                {isSubmitting ? "adding event...": "add event"}
+                </button>
 
 
         </form>
