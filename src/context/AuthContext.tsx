@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from 'react';
 import type { ReactNode } from 'react';
+import { clearUser, readUser, writeUser } from '../utils/userStorage';
 
 type User = {
     email:string
@@ -13,10 +14,21 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | null>(null)
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User|null>(null)
+
+  const [user,setUser] = useState<User|null>(()=>{
+    const loggedInUser = readUser()
+    return loggedInUser ? JSON.parse(loggedInUser) : null
+  })
+
   const setAuth = (authUser: User|null) => {
     setUser(authUser)
+    if (authUser) {
+      writeUser(JSON.stringify(authUser))
+    } else { 
+      clearUser()
+    }
   }
+
   return (
     <AuthContext.Provider value={{ user, setAuth }}>
       {children}
