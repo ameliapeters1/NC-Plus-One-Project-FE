@@ -1,4 +1,5 @@
-import { writeToken } from "../utils/tokenStorage";
+import type { NewEvent } from "../types/eventsTypes";
+import { readToken, writeToken } from "../utils/tokenStorage";
 
 export async function login(email: string, password: string) {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
@@ -32,4 +33,27 @@ export async function register(name:string, email: string, password: string) {
   if (!response.ok) throw new Error("Unable to sign up, please try again");
 
   await login(email,password)
+}
+
+export async function addEvent(event: NewEvent) {
+  const token = readToken()
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/events`,
+    {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        title:event.title, 
+        description: event.description, 
+        starts_at: event.startsAt, 
+        ends_at: event.endsAt, 
+        venue_id: event.venueID}),
+    },
+  );
+
+  if (!response.ok) throw new Error("Unable to add event please try again");
+
 }

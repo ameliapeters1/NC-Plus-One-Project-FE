@@ -8,3 +8,11 @@ export interface FetchedEvent{
     address: string
     capacity: 200,
 }
+
+export interface NewEvent{
+    title:string
+    description:string
+    startsAt:string
+    endsAt:string
+    venueID:number
+}
