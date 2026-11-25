@@ -32,7 +32,7 @@ export async function register(name:string, email: string, password: string) {
   }
   if (!response.ok) throw new Error("Unable to sign up, please try again");
 
-  await login(email,password)
+  return await login(email,password)
 }
 
 export async function addEvent(event: NewEvent) {

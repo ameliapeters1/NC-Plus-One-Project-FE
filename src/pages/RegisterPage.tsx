@@ -1,40 +1,22 @@
 import { useState } from "react"
 import type { SubmitEvent } from "react"
-import { register } from "../api/client"
 import { useNavigate } from "react-router"
-import { useAuth } from "../context/AuthContext"
+import { useRegister } from "../hooks/useRegister"
 
 function RegisterPage(){
     const navigate = useNavigate()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState<string|null>(null)
-    const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
-    const [success, setSuccess] = useState<boolean>(false)
-    const {setAuth} = useAuth()
+
+    const {handleRegister, error, isSubmitting, success} = useRegister()
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>){
         event.preventDefault()
 
-        setSuccess(false)
-        setError(null)
-        setIsSubmitting(true)
-
-        try{
-            await register(name, email.trim(), password)
-            setSuccess(true)
-             setAuth({email: email})
+        const registered = await handleRegister(name, email, password)
+        if (registered){
             navigate("/account")
-        }catch(err){
-            if (err instanceof Error){
-                setError(err.message)
-            } else {
-                setError("uh oh registration failed :(")
-            }
-        }
-        finally{
-            setIsSubmitting(false)
         }
     }
 
