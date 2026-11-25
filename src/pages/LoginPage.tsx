@@ -1,41 +1,22 @@
 import { useState } from "react"
 import type { SubmitEvent } from "react"
-import { login } from "../api/client"
-import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router"
+import { useLogin } from "../hooks/useLogin"
 
 function LoginPage(){
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState<string|null>(null)
-    const [isSubmitting,setIsSubmitting] = useState<boolean>(false)
-    const [success, setSuccess] = useState<boolean>(false)
-    const {setAuth} = useAuth()
+
+    const {handleLogin, error, isSubmitting, success} = useLogin()
+
 
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>){
         event.preventDefault()
 
-        setSuccess(false)
-        setError(null)
-        setIsSubmitting(true)
-
-        try{
-            // should put an access token into local storage upon registering 
-            await login(email.trim(), password)
-            setSuccess(true)
-
-            setAuth({email: email})
+        const loggedIn = await handleLogin(email, password)
+        if (loggedIn){
             navigate("/account")
-        } catch(err){
-            if (err instanceof Error){
-                setError(err.message)
-            } else {
-                setError("uh oh login failed :(")
-            }
-        }
-        finally{
-            setIsSubmitting(false)
         }
     }
 
