@@ -11,26 +11,29 @@ function IndividualEventPage() {
     const {user} = useAuth()
     const {event, isLoading, error} = useEvent(eventID)
     
-    if (isLoading) return <p>Loading event...</p>
-    if (error) return <p>{error}</p>
-    if (!event) return <p>Event not found</p>
+    if (isLoading) return <p className="event-list-message">Loading event...</p>
+    if (error) return <p className="event-list-message">{error}</p>
+    if (!event) return <p className="event-list-message">Event not found</p>
 
     return(
-        <> 
-            <section>
+        <main className="individual-event-page"> 
+            <section className="individual-event-container">
                 <IndividualEventCard event={event}/>
             </section>
 
             {/* button only shows if the user is authenticated and the user is the organiser of the event */}
-            <section>
+            <section className="event-organiser-actions">
                 {user && 
                 user.id === event.organiser_id && 
                 (<NavLink to={`/events/${id}/edit`}>edit event</NavLink>)}
             </section>
-
-            <RSVPButton eventID={eventID}/>
+            
+            <section className="event-rsvp-section">
+                <RSVPButton eventID={eventID}/>
+            </section>
+            
         
-        </>
+        </main>
     )
 }
 

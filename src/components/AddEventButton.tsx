@@ -4,7 +4,7 @@ function AddEventButton(){
     return(  
         <NavLink 
         to="/events/new" 
-        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
+        className={({ isActive }) => (isActive ? "add-event-button active" : "add-event-button")}>
             add event here   
         </NavLink> 
     )

@@ -14,15 +14,18 @@ function AccountPage(){
     }
     
     return(
-    <div>
+    <div className="account-page">
         <h2> Account info</h2>
 
         {user ? 
             (
                 <>
+                <div className="account-info">
                     <p>hello {user.name.split(" ")[0]}</p>
                     <button className="logout-btn" onClick={handleLogout}>Logout</button>
-
+                </div>
+                    
+                <div className="account-rsvps">
                     <h3>Your RSVPs</h3>
                     <h3>You have {events[0]?.total_rsvps ?? 0} upcoming events</h3>
                     {isLoading ? 
@@ -33,7 +36,7 @@ function AccountPage(){
                                 (<p>you haven't RSVPed to any events</p>) : 
                                 (events.map(event => (
                                    
-                                    <div key={event.id}>
+                                    <div key={event.id} className="account-rsvp-card">
                                         <h2>{event.title}</h2>
                                         <p>Date: {dateFromIsoTime(event.starts_at)}</p>
                                         <p>time: {timeFromIsoTime(event.starts_at)}</p>
@@ -42,6 +45,8 @@ function AccountPage(){
                                     ))
                                 )
                     }
+                </div>
+              
                 </>
 
             ): (

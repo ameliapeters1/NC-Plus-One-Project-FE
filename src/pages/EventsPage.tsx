@@ -10,13 +10,13 @@ function EventsPage(){
     const location = useLocation()
     const successMessage = location.state?.successMessage
     return(
-        <>
-            {successMessage && (<p> {successMessage} </p>)}
-            <section>
+        <main className="events-page">
+            {successMessage && (<p className="success-message"> {successMessage} </p>)}
+            <section className="events-list-section">
                 <EventsList/>
             </section>
 
-            <section>
+            <section className="add-event-section">
                 {user ? 
                     (<>
                         <p>add new event</p>
@@ -28,7 +28,7 @@ function EventsPage(){
                     </>
                     )}
             </section>
-        </>
+        </main>
 )
 }
 
