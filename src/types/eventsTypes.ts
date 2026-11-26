@@ -24,3 +24,12 @@ export interface EditEvent{
     startsAt:string
     endsAt:string
 }
+
+export interface RSVP{
+    id:number
+    title:string
+    starts_at:string
+    rsvp_date:string
+    event_rank:string
+    total_rsvps:number
+}

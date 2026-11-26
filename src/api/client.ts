@@ -62,7 +62,6 @@ export async function addEvent(event: NewEvent) {
 
 export async function editEvent(event: EditEvent) {
   const token = readToken()
-  console.log(token)
   const response = await fetch(
     `${import.meta.env.VITE_API_URL}/api/events/${event.id}`,
     {
@@ -81,4 +80,24 @@ export async function editEvent(event: EditEvent) {
 
   if (!response.ok) throw new Error("Unable to edit event, please try again");
 
+}
+
+export async function getUserRSVPs() {
+  const token = readToken()
+
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/user/me/events`,
+    {
+      method: "GET",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      },
+    },
+  );
+
+  if (!response.ok) throw new Error("Unable to fetch your RSVP, please try again");
+
+  const data = await response.json()
+  return data.events
 }
