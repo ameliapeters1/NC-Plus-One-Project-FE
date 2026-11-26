@@ -4,7 +4,7 @@ import { getUserRSVPs } from "../api/client";
 
 export function useUserRSVPs(enabled = true){
     const [events, setEvents] = useState<RSVP[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isLoading, setIsLoading] = useState<boolean>(enabled);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(()=>{
@@ -29,6 +29,6 @@ export function useUserRSVPs(enabled = true){
         }
 
         fetchRSVPs()
-    }, [])
+    }, [enabled])
     return { events, isLoading, error}
 }

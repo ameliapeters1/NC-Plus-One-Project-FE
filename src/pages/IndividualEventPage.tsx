@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router"
 import { useEvent } from "../hooks/useEvent"
 import IndividualEventCard from "../components/IndividualEventCard"
 import { useAuth } from "../context/AuthContext"
+import RSVPButton from "../components/RSVPButton"
 
 function IndividualEventPage() {
     const {id} = useParams()
@@ -26,6 +27,8 @@ function IndividualEventPage() {
                 user.id === event.organiser_id && 
                 (<NavLink to={`/events/${id}/edit`}>edit event</NavLink>)}
             </section>
+
+            <RSVPButton eventID={eventID}/>
         
         </>
     )

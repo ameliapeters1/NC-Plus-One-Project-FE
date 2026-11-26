@@ -101,3 +101,40 @@ export async function getUserRSVPs() {
   const data = await response.json()
   return data.events
 }
+
+export async function RSVP(id:number) {
+  const token = readToken()
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/events/${id}/rsvp`,
+    {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        event_id: id
+      }),
+    },
+  );
+
+  if (!response.ok) throw new Error("Unable to RSVP, please try again");
+
+}
+
+export async function deleteRSVP(id:number) {
+  const token = readToken()
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/events/${id}/rsvp/me`,
+    {
+      method: "DELETE",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      }
+    },
+  );
+
+  if (!response.ok) throw new Error("Unable to delete RSVP, please try again");
+
+}
