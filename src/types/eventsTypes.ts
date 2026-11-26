@@ -7,6 +7,7 @@ export interface FetchedEvent{
     location: string
     address: string
     capacity: number,
+    organiser_id: number
 }
 
 export interface NewEvent{

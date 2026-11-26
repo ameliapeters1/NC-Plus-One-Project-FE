@@ -20,9 +20,11 @@ function IndividualEventPage() {
                 <IndividualEventCard event={event}/>
             </section>
 
-{/* TO DO ONLY ALLOW THE USER TO EDIT THEIR OWN EVENT like only show button if correct */}
+            {/* button only shows if the user is authenticated and the user is the organiser of the event */}
             <section>
-                {user && (<NavLink to={`/events/${id}/edit`}>edit event</NavLink>)}
+                {user && 
+                user.id === event.organiser_id && 
+                (<NavLink to={`/events/${id}/edit`}>edit event</NavLink>)}
             </section>
         
         </>
