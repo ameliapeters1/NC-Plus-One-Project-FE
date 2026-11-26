@@ -16,8 +16,12 @@ export function useRegister(){
             setIsSubmitting(true)
 
             try{
-                await register(name, email.trim(), password)
-                setAuth({email:email.trim()})
+                const user = await register(name, email.trim(), password)
+                setAuth({
+                    id: user.id,
+                    email: user.email,
+                    name: user.name
+                    })
                 setSuccess(true)
                 return true
 

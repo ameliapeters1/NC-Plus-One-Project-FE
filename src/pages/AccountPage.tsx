@@ -9,7 +9,7 @@ function AccountPage(){
         setAuth(null)
         clearToken()
     }
-
+    
     return(
     <div>
         <h2> Account info</h2>
@@ -17,7 +17,7 @@ function AccountPage(){
         {user ? 
             (
                 <>
-                    <p>hello {user.email}</p>
+                    <p>hello {user.name.split(" ")[0]}</p>
                     <button className="logout-btn" onClick={handleLogout}>Logout</button>
                 </>
 

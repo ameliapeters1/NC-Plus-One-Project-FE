@@ -13,8 +13,10 @@ export async function login(email: string, password: string) {
   }
   if (!response.ok) throw new Error("Unable to log in, please try again");
 
-  const { token } = await response.json();
-  writeToken(token)
+  const data = await response.json();
+  writeToken(data.token)
+
+  return data.user
 }
 
 export async function register(name:string, email: string, password: string) {
@@ -77,11 +79,6 @@ export async function editEvent(event: EditEvent) {
     },
   );
 
-  if (!response.ok) {
-    const errorData = await response.json()
-    console.log("Backend error:", errorData)
-    throw new Error(errorData.detail?.message || "Unable to edit event")
-}
-  //if (!response.ok) throw new Error("Unable to edit event, please try again");
+  if (!response.ok) throw new Error("Unable to edit event, please try again");
 
 }

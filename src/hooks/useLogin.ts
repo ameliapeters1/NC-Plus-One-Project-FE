@@ -16,10 +16,14 @@ export function useLogin(){
 
         try{
             // should put an access token into local storage upon registering 
-            await login(email.trim(), password)
+            const user = await login(email.trim(), password)
 
             setSuccess(true)
-            setAuth({email: email.trim()})
+                setAuth({
+                    id: user.id,
+                    email: user.email,
+                    name: user.name
+                    })
 
             return true 
         } catch(err){

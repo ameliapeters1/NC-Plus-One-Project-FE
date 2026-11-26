@@ -3,7 +3,9 @@ import type { ReactNode } from 'react';
 import { clearUser, readUser, writeUser } from '../utils/userStorage';
 
 type User = {
+    id: number
     email:string
+    name:string
 }
 
 type AuthContextType = {
