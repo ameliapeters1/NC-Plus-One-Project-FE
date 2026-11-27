@@ -71,46 +71,82 @@ p {
 }
 
 /* ========================================
-   NAVIGATION
+   HEADER & NAVIGATION
 ======================================== */
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 35px;
+    margin: 0 auto;
+
+    background: var(--bg);
+}
+
+/* Logo */
+
+.logo {
+    font-family: var(--heading);
+    font-size: 26px;
+    color: var(--text-h);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Navigation */
 
 nav {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 18px 30px;
-    background: #382047;
-    border: 2px solid #543568;
-    border-radius: 18px;
-    margin: 20px auto;
-    max-width: 600px;
-    box-shadow: 3px 4px 0 #c5a5d5;
+    gap: 10px;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 nav .nav-link {
     text-decoration: none;
-    color: #ead9f0;
-    font-size: 16px;
+    color: var(--text);
+    font-size: 15px;
     font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 12px;
-    transition: 0.3s ease;
+
+    padding: 8px 15px;
+    border-radius: 10px;
+
+    transition: 0.2s ease;
 }
 
 nav .nav-link:hover {
-    background: #654477;
-    color: white;
-    transform: translateY(-2px);
+    background: #f1e5f5;
+    color: var(--text-h);
 }
 
 nav .nav-link.active {
-    background: #b57acb;
-    color: white;
-    box-shadow: 2px 3px 0 #9463a7;
+    background: #e6d5ed;
+    color: var(--text-h);
+    box-shadow: none;
 }
 
+/* Mobile */
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    nav {
+        gap: 5px;
+    }
+}
 /* ========================================
    AUTH PAGES
 ======================================== */
@@ -903,4 +939,140 @@ input:focus-visible {
     background: #ead9f0;
     border-color: var(--accent);
     transform: translateY(-2px);
+}
+
+
+/* ========================================
+   HOME PAGE
+======================================== */
+
+.home-page {
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Welcome card */
+
+.welcome-card {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    padding: 55px 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    text-align: center;
+
+    background: #fffaff;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+
+    box-shadow: 5px 6px 0 #e6d5ed, var(--shadow);
+
+    transform: rotate(-0.5deg);
+}
+
+/* Decorative tape */
+
+.welcome-card::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 42%;
+    width: 110px;
+    height: 27px;
+
+    background: rgba(181, 122, 203, 0.4);
+    transform: rotate(-4deg);
+}
+
+/* Small welcome label */
+
+.welcome-label {
+    padding: 7px 17px;
+    color: #9463a7;
+    background: #f1e5f5;
+    border: 1px dashed #d9bfdf;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* Main heading */
+
+.welcome-card h1 {
+    font-size: clamp(30px, 5vw, 43px);
+    line-height: 1.2;
+    color: var(--text-h);
+    margin: 8px 0;
+}
+
+/* Questions */
+
+.welcome-questions {
+    width: 100%;
+    max-width: 510px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.welcome-questions p {
+    padding: 13px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 2px 3px 0 #e6d5ed;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Big statement */
+
+.welcome-card h2 {
+    color: #9463a7;
+    font-size: 23px;
+    margin: 10px 0 0;
+}
+
+/* Description */
+
+.welcome-description {
+    max-width: 470px;
+    line-height: 1.7;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .home-page {
+        padding: 30px 15px;
+    }
+
+    .welcome-card {
+        padding: 40px 20px;
+        gap: 14px;
+    }
+
+    .welcome-card h1 {
+        font-size: 30px;
+    }
+
+    .welcome-card h2 {
+        font-size: 19px;
+    }
+
+    .welcome-questions p {
+        font-size: 13px;
+    }
 }
