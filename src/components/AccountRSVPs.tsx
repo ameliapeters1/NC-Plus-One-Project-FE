@@ -14,7 +14,7 @@ function AccountRSVPs({user}:AccountRSVPsProps){
     return(
         <div className="account-rsvps">
             <h2>your RSVPs 🗓️</h2>
-            <h3>you have {totalRSVPs} upcoming {totalRSVPs === 1 ? "event" : "events"}</h3>
+            <h3>you have {totalRSVPs} upcoming {totalRSVPs === 1 ? "event" : "events"} to attend</h3>
             {totalRSVPs ===0 ? "get yourself to some events asap" : 
                 totalRSVPs > 3 ? "yes, you said you'd go to all these": "i think you could do more"}
  

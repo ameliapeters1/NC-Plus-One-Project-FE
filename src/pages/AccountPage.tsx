@@ -2,6 +2,7 @@ import { useAuth } from "../context/AuthContext"
 import AccountInfo from "../components/AccountInfo"
 import AccountRSVPs from "../components/AccountRSVPs"
 import AuthNavigation from "../components/AuthNavigation"
+import AccountEvents from "../components/AccountEvents"
 
 function AccountPage(){
     const { user } = useAuth()
@@ -14,7 +15,11 @@ function AccountPage(){
             (
                 <>
                     <AccountInfo/>
-                    <AccountRSVPs user={user}/>
+                    <section className="account-events-container">
+                        <AccountRSVPs user={user}/>
+                        <AccountEvents/>
+                    </section>
+                    
                 </>
 
             ): (
