@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import type { FetchedEvent } from "../types/eventsTypes"
 
 export function useEvent(id: number) {
@@ -6,10 +6,10 @@ export function useEvent(id: number) {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
 
-    useEffect (() => {
-        const fetchEvent = async () => {
-            setIsLoading(true)
-            setError(null)
+    
+    async function fetchEvent() {
+        setIsLoading(true)
+        setError(null)
 
         try {
             const response = await fetch(import.meta.env.VITE_API_URL + `/api/events/${id}`) 
@@ -23,8 +23,10 @@ export function useEvent(id: number) {
         } finally {
             setIsLoading(false)
         }
-        }
-    fetchEvent()       
+    }
+
+    useEffect(()=>{
+        fetchEvent()       
     } , [id])
-    return { event, isLoading, error}
+    return { event, isLoading, error, refetch: fetchEvent}
 }

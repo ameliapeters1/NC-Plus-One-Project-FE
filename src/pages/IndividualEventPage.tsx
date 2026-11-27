@@ -10,7 +10,7 @@ function IndividualEventPage() {
     const eventID = Number(id)
 
     const {user} = useAuth()
-    const {event, isLoading, error} = useEvent(eventID)
+    const {event, isLoading, error, refetch} = useEvent(eventID)
     
     if (isLoading) return <p className="event-list-message">loading event...</p>
     if (error) return <p className="event-list-message">{error}</p>
@@ -33,7 +33,9 @@ function IndividualEventPage() {
             </section>
 
             <section className="event-rsvp-section">
-                <RSVPButton eventID={eventID}/>
+                <RSVPButton 
+                eventID={eventID}
+                onRSVPSuccess={refetch}/>
             </section>
         
         </main>

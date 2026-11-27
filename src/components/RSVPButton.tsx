@@ -5,8 +5,9 @@ import { useEffect, useState } from "react"
 
 interface RSVPButtonProps{
     eventID:number
+    onRSVPSuccess: ()=> Promise<void>
 }
-function RSVPButton({eventID}:RSVPButtonProps){
+function RSVPButton({eventID, onRSVPSuccess}:RSVPButtonProps){
     const [hasRSVPed, setHasRSVPed] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     
@@ -16,8 +17,8 @@ function RSVPButton({eventID}:RSVPButtonProps){
     // true if for any of the events in the array match the eventID given
     useEffect(()=>{
         setHasRSVPed(events.some(event => event.id === eventID))
-    }, [events, eventID]
-)
+        }, [events, eventID]
+    )
     
     async function handleRSVP(){
         setIsSubmitting(true)
@@ -29,6 +30,7 @@ function RSVPButton({eventID}:RSVPButtonProps){
                 await RSVP(eventID)
                 setHasRSVPed(true)
             }
+            await onRSVPSuccess()
             
         } catch(err){
             err instanceof Error ? err.message:"uh oh issues occurred"
