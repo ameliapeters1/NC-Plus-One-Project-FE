@@ -40,7 +40,7 @@ function AccountPage(){
                                 (<p>you haven't RSVPed to any events</p>) : 
                                 (events.map(event => (
                                    
-                                    <Link to={`/events/${event.id}`} className="account-rsvp-card">
+                                    <Link key={event.id} to={`/events/${event.id}`} className="account-rsvp-card">
                                         <h2>{event.title.toLowerCase()}</h2>
                                         <p>date: {dateFromIsoTime(event.starts_at)}</p>
                                         <p>time: {timeFromIsoTime(event.starts_at)}</p>
