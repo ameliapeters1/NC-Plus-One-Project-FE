@@ -138,3 +138,23 @@ export async function deleteRSVP(id:number) {
   if (!response.ok) throw new Error("Unable to delete RSVP, please try again");
 
 }
+
+export async function getAttendees(id:number) {
+  const token = readToken()
+
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/events/${id}/attendees`,
+    {
+      method: "GET",
+      headers: { 
+        "Content-Type": "application/json" ,
+        "Authorization": `Bearer ${token}`
+      },
+    },
+  );
+
+  if (!response.ok) throw new Error("Unable to fetch attendee info, please try again");
+
+  const data = await response.json()
+  return data.attendees
+}

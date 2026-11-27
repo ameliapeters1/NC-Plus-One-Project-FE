@@ -3,6 +3,7 @@ import { useEvent } from "../hooks/useEvent"
 import IndividualEventCard from "../components/IndividualEventCard"
 import { useAuth } from "../context/AuthContext"
 import RSVPButton from "../components/RSVPButton"
+import AttendeesInfo from "../components/AttendeesInfo"
 
 function IndividualEventPage() {
     const {id} = useParams()
@@ -21,17 +22,19 @@ function IndividualEventPage() {
                 <IndividualEventCard event={event}/>
             </section>
 
-            {/* button only shows if the user is authenticated and the user is the organiser of the event */}
+            {/* button and attendee info only shows if the user is authenticated and the user is the organiser of the event */}
             <section className="event-organiser-actions">
                 {user && 
                 user.id === event.organiser_id && 
-                (<NavLink to={`/events/${id}/edit`}>edit event</NavLink>)}
+                (<>
+                    <AttendeesInfo eventID={eventID}/>
+                    <NavLink to={`/events/${id}/edit`}>edit event</NavLink>
+                </>)}
             </section>
-            
+
             <section className="event-rsvp-section">
                 <RSVPButton eventID={eventID}/>
             </section>
-            
         
         </main>
     )

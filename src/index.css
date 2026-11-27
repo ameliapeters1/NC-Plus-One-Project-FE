@@ -514,6 +514,7 @@ nav .nav-link.active {
     cursor: not-allowed;
 }
 
+
 /* ========================================
    ACCESSIBILITY
 ======================================== */
@@ -861,26 +862,34 @@ input:focus-visible {
 
 .event-organiser-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     max-width: 650px;
     padding: 0 20px;
 }
 
+/* Attendee information on the left */
+.event-organiser-actions .attendee-info {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+/* Edit event on the right */
 .event-organiser-actions a {
     display: inline-block;
     padding: 7px 14px;
-
     font-family: var(--sans);
     font-size: 13px;
     color: var(--text);
-
     background: #f1e5f5;
     border: 1px dashed #d9bfdf;
     border-radius: 8px;
-
     text-decoration: none;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .event-organiser-actions a:hover {
