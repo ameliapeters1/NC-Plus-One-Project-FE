@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from 'react';
 import type { ReactNode } from 'react';
 import { clearUser, readUser, writeUser } from '../utils/userStorage';
 
-type User = {
+export type User = {
     id: number
     email:string
     name:string

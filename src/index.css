@@ -675,6 +675,12 @@ input:focus-visible {
     gap: 18px;
 }
 
+.account-rsvps > h2 {
+    color: var(--text-h);
+    font-size: 30px;
+    margin: 5px 0;
+}
+
 .account-rsvps > h3 {
     color: var(--text-h);
     font-size: 21px;
