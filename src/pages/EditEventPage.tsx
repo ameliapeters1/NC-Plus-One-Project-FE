@@ -14,6 +14,9 @@ function EditEventPage(){
     if (error) return <p>{error}</p>
     if (!event) return <p>event not found</p>
 
+    if (!user || user.id !== event.organiser_id) {
+    return <p>you are not the organiser so cannot edit this event.</p>}
+
     return(
     <>
     {user && (<EditEventForm 
