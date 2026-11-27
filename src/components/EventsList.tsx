@@ -5,9 +5,9 @@ import { useEventsList } from "../hooks/useEventsList";
 function EventsList(){
     const {events, isLoading, error} = useEventsList()
 
-    if (isLoading) return(<p>LOADING...</p>)
+    if (isLoading) return(<p>fun plans loading...</p>)
     if (error) return (<p>ERROR! {error} </p>)
-    if (events.length===0) return(<p>No events yet :/</p>)
+    if (events.length===0) return(<p>awks... no events yet :/</p>)
 
     return(
         <ul className="event-list">

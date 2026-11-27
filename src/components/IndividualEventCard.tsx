@@ -12,18 +12,18 @@ function IndividualEventCard({event}:IndividualEventCardProps){
 
     return(
         <>
-            <h2> {event.title}</h2>
+            <h2> {event.title.toLowerCase()}</h2>
             <section>
-                <h3> When? </h3>
+                <h3> when does the fun start? </h3>
                 <p>{date}</p>
                 <p>{startTime}-{endTime}</p>
             </section>
             <section>
-                <h3> About!! </h3>
+                <h3> what is it all about? </h3>
                 <p>{event.description}</p>
             </section>
             <section>
-                <h3> Where? </h3>
+                <h3> where to find it? </h3>
                 <p>{event.location}</p>
                 <p>{event.address}</p>
             </section>

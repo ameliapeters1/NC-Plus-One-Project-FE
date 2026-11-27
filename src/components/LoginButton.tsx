@@ -5,7 +5,7 @@ function LoginButton(){
         <NavLink 
         to="/login" 
         className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
-            Login here   
+            login here   
         </NavLink> 
     )
 }

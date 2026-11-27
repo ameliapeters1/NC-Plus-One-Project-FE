@@ -11,9 +11,9 @@ function IndividualEventPage() {
     const {user} = useAuth()
     const {event, isLoading, error} = useEvent(eventID)
     
-    if (isLoading) return <p className="event-list-message">Loading event...</p>
+    if (isLoading) return <p className="event-list-message">loading event...</p>
     if (error) return <p className="event-list-message">{error}</p>
-    if (!event) return <p className="event-list-message">Event not found</p>
+    if (!event) return <p className="event-list-message">event not found</p>
 
     return(
         <main className="individual-event-page"> 

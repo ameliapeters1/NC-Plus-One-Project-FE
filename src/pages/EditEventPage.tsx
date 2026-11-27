@@ -10,9 +10,9 @@ function EditEventPage(){
     const {user} = useAuth()
     const {event, isLoading, error} = useEvent(eventID)
 
-    if (isLoading) return <p>Loading event...</p>
+    if (isLoading) return <p>loading event...</p>
     if (error) return <p>{error}</p>
-    if (!event) return <p>Event not found</p>
+    if (!event) return <p>event not found</p>
 
     return(
     <>

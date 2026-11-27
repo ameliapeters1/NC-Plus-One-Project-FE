@@ -12,10 +12,10 @@ function EventCard({id, title, starts_at}:EventCardProps){
     const time = timeFromIsoTime(starts_at)
     return(
         <li className="event-card">
-            <h2>{title}</h2>
-            <p> Date: {date}</p>
-            <p> Start time: {time}</p>
-            <Link to={`/events/${id}`}>View Event</Link>
+            <h2>{title.toLowerCase()}</h2>
+            <p> date: {date}</p>
+            <p> start time: {time}</p>
+            <Link to={`/events/${id}`}>view event</Link>
         </li>
     )
 }

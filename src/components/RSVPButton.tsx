@@ -38,14 +38,14 @@ function RSVPButton({eventID}:RSVPButtonProps){
     }
 
     if (!user) return null
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>loading...</p>
     if (error) return <p>{error}</p>
 
     return(
         <button onClick={handleRSVP} disabled={isSubmitting}>{
             isSubmitting ? 
                 "processing...":
-                hasRSVPed ? "Delete rsvp": "rsvp"}
+                hasRSVPed ? "cancel fun and delete rsvp :(": "rsvp to have the best time of your life :)"}
         </button>
     )
 }

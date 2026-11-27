@@ -68,23 +68,23 @@ function AddEventForm(){
 
     return(
         <form className="auth-form" onSubmit={handleSubmit}>
-            <h1>New event!</h1>
+            <h1>new event 👀</h1>
             
 
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">title</label>
             <input 
             id="title" 
             type="text" 
-            placeholder="Enter title" 
+            placeholder="give this little gathering a name..." 
             value={title}
             onChange={(event)=>setTitle(event.target.value)} 
             required/>
 
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">description</label>
             <input 
             id="description" 
             type="text" 
-            placeholder="Enter description" 
+            placeholder="spill the deets..." 
             value={description} 
             onChange={(event)=>setDescription(event.target.value)}
             required/>
@@ -113,7 +113,7 @@ function AddEventForm(){
             value={venueID}
             onChange={(event)=>setVenueID(Number(event.target.value))}
             required>
-                <option value={0}>select a venue</option>
+                <option value={0}>pick your party spot ✨</option>
                 {venues.map(venue => (
                     <option 
                     key={venue.id} 

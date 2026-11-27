@@ -22,14 +22,14 @@ function LoginPage(){
 
     return(
         <form className="auth-form" onSubmit={handleSubmit}>
-            <h1>Login here!</h1>
+            <h1>login here!</h1>
             
 
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">email</label>
               <input 
               id="email" 
               type="text" 
-              placeholder="Enter Email" 
+              placeholder="place your @ here" 
               value={email}
               onChange={(event)=>setEmail(event.target.value)} 
               required/>
@@ -38,15 +38,15 @@ function LoginPage(){
              <input 
              id="password" 
              type="password" 
-             placeholder="Enter Password" 
+             placeholder="top secret info here" 
              value={password} 
              onChange={(event)=>setPassword(event.target.value)}
              required/>
 
-            {error && <p>Error found! {error}</p>}
-            {success && <p>Logged in! {email}</p>}
+            {error && <p>error found! {error}</p>}
+            {success && <p>logged in! {email}</p>}
 
-            <button type="submit" className="signupbtn" disabled={isSubmitting}>{isSubmitting ? "Logging in...": "Login"}</button>
+            <button type="submit" className="signupbtn" disabled={isSubmitting}>{isSubmitting ? "unlocking...": "click to unlock everything"}</button>
 
         </form>
     )

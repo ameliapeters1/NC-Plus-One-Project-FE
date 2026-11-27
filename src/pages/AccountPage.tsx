@@ -15,19 +15,22 @@ function AccountPage(){
     
     return(
     <div className="account-page">
-        <h2> Account info</h2>
+        <h2> it's all about you here 👑</h2>
 
         {user ? 
             (
                 <>
                 <div className="account-info">
-                    <p>hello {user.name.split(" ")[0]}</p>
-                    <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                    <p>hello {user.name.split(" ")[0].toLowerCase()}</p>
+                    <p>welcome back to your page to see everything you have coming up</p>
+                    <button className="logout-btn" onClick={handleLogout}>logout if you really have to</button>
                 </div>
                     
                 <div className="account-rsvps">
                     <h3>Your RSVPs</h3>
-                    <h3>You have {events[0]?.total_rsvps ?? 0} upcoming events</h3>
+                    <h3>you have {events[0]?.total_rsvps ?? 0} upcoming events</h3>
+                    {events[0]?.total_rsvps>0 ? "yes, you said you would go to all these": "get yourself to some events asap"}
+
                     {isLoading ? 
                         ( <p>Loading your events...</p> ) : 
                         error ? 
@@ -37,8 +40,8 @@ function AccountPage(){
                                 (events.map(event => (
                                    
                                     <div key={event.id} className="account-rsvp-card">
-                                        <h2>{event.title}</h2>
-                                        <p>Date: {dateFromIsoTime(event.starts_at)}</p>
+                                        <h2>{event.title.toLowerCase()}</h2>
+                                        <p>date: {dateFromIsoTime(event.starts_at)}</p>
                                         <p>time: {timeFromIsoTime(event.starts_at)}</p>
                                         <p>rsvp date: {timeFromIsoTime(event.rsvp_date)}</p>
                                     </div>

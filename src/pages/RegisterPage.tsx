@@ -22,21 +22,21 @@ function RegisterPage(){
 
     return(
         <form className="auth-form" onSubmit={handleSubmit}>
-            <h1>Sign up here!</h1>
-            <label htmlFor="name">Name</label>
+            <h1>sign up here!</h1>
+            <label htmlFor="name">name</label>
               <input 
               id="name" 
               type="text" 
-              placeholder="Enter name" 
+              placeholder="what's your name girllll?" 
               value={name}
               onChange={(event)=>setName(event.target.value)} 
               required/>
 
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">email</label>
               <input 
               id="email" 
               type="text" 
-              placeholder="Enter Email" 
+              placeholder="how do i hit you up?" 
               value={email}
               onChange={(event)=>setEmail(event.target.value)} 
               required/>
@@ -45,7 +45,7 @@ function RegisterPage(){
              <input 
              id="password" 
              type="password" 
-             placeholder="Enter Password" 
+             placeholder="super secure password goes here" 
              value={password} 
              onChange={(event)=>setPassword(event.target.value)}
              required/>
@@ -53,7 +53,7 @@ function RegisterPage(){
             {error && <p>Error found! {error}</p>}
             {success && <p>You're in!</p>}
 
-            <button type="submit" className="signupbtn" disabled={isSubmitting}>{isSubmitting ? "Signing up...": "Sign up"}</button>
+            <button type="submit" className="signupbtn" disabled={isSubmitting}>{isSubmitting ? "signing up...": "click to become one of us"}</button>
 
         </form>
     )
