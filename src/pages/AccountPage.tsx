@@ -27,9 +27,10 @@ function AccountPage(){
                 </div>
                     
                 <div className="account-rsvps">
-                    <h3>Your RSVPs</h3>
-                    <h3>you have {events[0]?.total_rsvps ?? 0} upcoming events</h3>
-                    {events[0]?.total_rsvps>0 ? "yes, you said you would go to all these": "get yourself to some events asap"}
+                    <h3>your RSVPs</h3>
+                    <h3>you have {events[0]?.total_rsvps ?? 0} upcoming {(events[0]?.total_rsvps ?? 0) === 1 ? "event" : "events"}</h3>
+                    {events[0]?.total_rsvps===0 ? "get yourself to some events asap" : 
+                        events[0]?.total_rsvps>2 ? "yes, you said you'd go to all these": "i think you could do more"}
 
                     {isLoading ? 
                         ( <p>Loading your events...</p> ) : 
