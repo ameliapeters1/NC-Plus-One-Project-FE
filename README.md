@@ -1,32 +1,22 @@
-# React + TypeScript + Vite
+# NC Plus One - Frontend
+This repo contains the front end for the NC Plus One Project - an events platform. An unauthenticated user can browse events, register and login. Once logged in, a user can RSVP, create and manage events. 
+The backend can be found at: https://github.com/ameliapeters1/NC-Plus-One-Project
+This application is built using React and TypeScript, with Vite as the development and build tool.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Set up
+1. Install Node.js and npm
+2. Fork and clone this repository
+3. Install dependencies:
+  ```bash
+    npm install
+  ```
+4. Create a .env file following .env.example for the required info
+5. Start the backend server (in a different terminal, from the backend repository):
+  ```bash
+    uvicorn main:app --reload
+  ```
+6. Start the development server:
+  ```bash
+    npm run dev
+  ```
+7. Open the URL provided in the terminal to access the application locally
