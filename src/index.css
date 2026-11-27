@@ -684,15 +684,21 @@ input:focus-visible {
 
 .account-rsvp-card {
     position: relative;
+    display: block;
     width: 100%;
     max-width: 550px;
     padding: 25px 30px;
+
     text-align: left;
+    text-decoration: none;
+    color: var(--text);
+
     background: #fffaff;
     border: 2px solid var(--border);
     border-radius: 8px 14px 7px 12px;
+
     box-shadow: 4px 5px 0 #e6d5ed, var(--shadow);
-    transition: transform 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 .account-rsvp-card:nth-child(even) {
@@ -704,8 +710,51 @@ input:focus-visible {
     transform: rotate(-0.5deg);
 }
 
+.account-rsvp-card h2::after {
+    content: " ↗";
+    font-size: 15px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.account-rsvp-card:hover h2::after {
+    opacity: 1;
+}
+
+/* Little decorative tape */
+
+.account-rsvp-card::before {
+    content: "";
+    position: absolute;
+    top: -11px;
+    left: 40%;
+    width: 75px;
+    height: 22px;
+    background: rgba(181, 122, 203, 0.35);
+    transform: rotate(-4deg);
+}
+
+/* Decorative flower */
+
+.account-rsvp-card::after {
+    content: "✿";
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: #c69bd5;
+    font-size: 22px;
+}
+
 .account-rsvp-card:hover {
-    transform: translateY(-4px) rotate(0deg);
+    transform: translateY(-5px) rotate(0deg);
+    box-shadow: 5px 7px 0 #e6d5ed, var(--shadow);
+    border-color: #d9bfdf;
+}
+
+.account-rsvp-card:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 5px;
 }
 
 .account-rsvp-card h2 {
@@ -713,12 +762,14 @@ input:focus-visible {
     padding-bottom: 10px;
     margin-bottom: 12px;
     border-bottom: 1px dashed #d9bfdf;
+    color: var(--text-h);
 }
 
 .account-rsvp-card p {
     font-size: 14px;
     margin: 9px 0;
     line-height: 1.6;
+    color: var(--text);
 }
 
 /* Loading / error / empty messages */

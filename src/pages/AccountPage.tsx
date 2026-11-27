@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+import { Link, NavLink } from "react-router"
 import { useAuth } from "../context/AuthContext"
 import { clearToken } from "../utils/tokenStorage"
 import { useUserRSVPs } from "../hooks/useUserRSVPs"
@@ -40,12 +40,12 @@ function AccountPage(){
                                 (<p>you haven't RSVPed to any events</p>) : 
                                 (events.map(event => (
                                    
-                                    <div key={event.id} className="account-rsvp-card">
+                                    <Link to={`/events/${event.id}`} className="account-rsvp-card">
                                         <h2>{event.title.toLowerCase()}</h2>
                                         <p>date: {dateFromIsoTime(event.starts_at)}</p>
                                         <p>time: {timeFromIsoTime(event.starts_at)}</p>
-                                        <p>rsvp date: {timeFromIsoTime(event.rsvp_date)}</p>
-                                    </div>
+                                        <p>rsvp date: {dateFromIsoTime(event.rsvp_date)}</p>
+                                    </Link>
                                     ))
                                 )
                     }
