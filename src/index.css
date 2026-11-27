@@ -856,3 +856,36 @@ input:focus-visible {
 .auth-form select:invalid {
     color: #b49dbd;
 }
+
+/* EDIT EVENT LINK */
+
+.event-organiser-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 650px;
+    padding: 0 20px;
+}
+
+.event-organiser-actions a {
+    display: inline-block;
+    padding: 7px 14px;
+
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text);
+
+    background: #f1e5f5;
+    border: 1px dashed #d9bfdf;
+    border-radius: 8px;
+
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.event-organiser-actions a:hover {
+    color: var(--text-h);
+    background: #ead9f0;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
