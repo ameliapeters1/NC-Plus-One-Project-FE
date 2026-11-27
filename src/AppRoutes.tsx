@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import AccountPage from "./pages/AccountPage";
 import AddEventPage from "./pages/AddEventPage";
 import EditEventPage from "./pages/EditEventPage";
+import AttendeeInfoPage from "./pages/AttendeeInfoPage";
 
 function AppRoutes() {
     return(
@@ -23,6 +24,7 @@ function AppRoutes() {
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/account" element={<AccountPage/>}/>
+                <Route path="/:id/attendees" element={<AttendeeInfoPage/>}/>
 
                 <Route path = "/*" element={<NotFoundPage/>} />
             </Routes>

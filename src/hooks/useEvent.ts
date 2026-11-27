@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react"
+import { useState, useEffect } from "react"
 import type { FetchedEvent } from "../types/eventsTypes"
 
 export function useEvent(id: number) {

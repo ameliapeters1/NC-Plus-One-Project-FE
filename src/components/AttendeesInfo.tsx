@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import { useAttendees } from "../hooks/useAttendees"
 
 interface AttendeesInfoProps{
@@ -16,6 +17,7 @@ function AttendeesInfo({eventID}:AttendeesInfoProps){
     return(
         <section className="attendee-info">
             <p>{attendees.length} ppl going</p>
+            <Link to={`/${eventID}/attendees`}>more info on ppl here</Link>
         </section>
     )
 }
